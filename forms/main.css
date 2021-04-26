@@ -1,0 +1,58 @@
+html {
+    font-size: 10px;
+}
+body, button, button:focus {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+    letter-spacing: 3px;
+    font-size: 2rem;
+}
+.heading {
+    text-align: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.input {
+    width: 45rem;
+    height: 4rem;
+    margin-bottom: 1.5rem;
+}
+.label {
+    font-size: 3rem;
+}
+.btn {
+    width: 12rem;
+    height: 6rem;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 0px 7px 2px black;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+    background-color: whitesmoke;
+    color:#0D6EFD;
+}
+.btn:hover {
+    border: 2px solid black;
+    border-radius: 5px;
+    color: white;
+    background-color:#0D6EFD;
+    box-shadow: 0px 7px 2px black;
+}
+.btn:active {
+    border: 2px solid black;
+    border-radius: 5px;
+    transform: translateY(0.15rem); 
+    box-shadow: none;
+}
+.btn:focus {
+    outline: none;
+    border: 2px solid black;
+    border-radius: 5px;
+}

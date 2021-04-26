@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+    <title>Create Course</title>
+</head>
+<body>
+    <h1 class="heading">
+        Create New Course
+    </h1>
+    <form action="/web/courses/create" method="POST" class="form">
+        <label for="name" class="label">Name:</label>
+        <input type="text" name="name" id="name" class="input"/>
+        <label for="code" class="label">Code:</label>
+        <input type="text" name="code" id="code" class="input"/>
+        <label for="description" class="label">Description:</label>
+        <input type="text" name="description" id="code" class="input"/>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</body>
