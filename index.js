@@ -2,10 +2,12 @@ const express = require('express');
 const path = require('path');
 const apiRouter = require('./routers/apiRouter');
 const formsRouter = require('./routers/formsRouter');
+const defaultRouter = require('./routers/defaultRouter');
 
 const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'forms')));
+app.use('/', defaultRouter);
 app.use('/api', apiRouter);
 app.use('/web', formsRouter);
 

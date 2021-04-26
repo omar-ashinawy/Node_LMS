@@ -25,3 +25,16 @@ exports.getCourseForm = function(req, res) {
         return res.end();
     });
 };
+
+exports.getJSCode = function(req, res) {
+    const formPath = './forms/code.html';
+    fs.readFile(formPath, (error, data) => {
+        if(error) {
+            res.writeHead(404, {'Content-Type': 'text/html'});
+            return res.end('Form Not Found!');
+        }
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
+        return res.end();
+    });
+};

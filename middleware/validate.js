@@ -12,7 +12,7 @@ exports.validateCourse = (course) => {
     const schema = Joi.object({
         name: Joi.string().min(5).required(),
         code: Joi.string().pattern(new RegExp('^[A-z]{3}[0-9]{3}$')).required(),
-        description: Joi.string().max(200)
+        description: Joi.string().min(0).max(200).optional()
     });
     return schema.validate(course);
 };
