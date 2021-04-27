@@ -17,23 +17,7 @@
                 */
                 /*
                 1. Controllers
-                1.1. Code Controller
-                */
-                const fs = require('fs');
-                exports.getJSCode = function(req, res) {
-                    const formPath = './forms/code.html';
-                    fs.readFile(formPath, (error, data) => {
-                        if(error) {
-                            res.writeHead(404, {'Content-Type': 'text/html'});
-                            return res.end('Form Not Found!');
-                        }
-                        res.writeHead(200, {'Content-Type': 'text/html'});
-                        res.write(data);
-                        return res.end();
-                    });
-                };
-                /*
-                1.2. Courses Controller
+                1.1. Courses Controller
                 */
                 const validateCourse = require('../middleware/validate').validateCourse;
                 const coursesModel = require('../models/coursesModel');
@@ -99,29 +83,42 @@
                 const fs = require('fs');
 
                 exports.getStudentForm = function(req, res) {
-                const formPath = './forms/createStudent.html';
-                fs.readFile(formPath, (error, data) => {
-                    if(error) {
-                        res.writeHead(404, {'Content-Type': 'text/html'});
-                        return res.end('Form Not Found!');
-                    }
-                    res.writeHead(200, {'Content-Type': 'text/html'});
-                    res.write(data);
-                    return res.end();
-                });
+                    const formPath = './forms/createStudent.html';
+                    fs.readFile(formPath, (error, data) => {
+                        if(error) {
+                            res.writeHead(404, {'Content-Type': 'text/html'});
+                            return res.end('Form Not Found!');
+                        }
+                        res.writeHead(200, {'Content-Type': 'text/html'});
+                        res.write(data);
+                        return res.end();
+                    });
                 };
 
                 exports.getCourseForm = function(req, res) {
-                const formPath = './forms/createCourse.html';
-                fs.readFile(formPath, (error, data) => {
-                    if(error) {
-                        res.writeHead(404, {'Content-Type': 'text/html'});
-                        return res.end('Form Not Found!');
-                    }
-                    res.writeHead(200, {'Content-Type': 'text/html'});
-                    res.write(data);
-                    return res.end();
-                });
+                    const formPath = './forms/createCourse.html';
+                    fs.readFile(formPath, (error, data) => {
+                        if(error) {
+                            res.writeHead(404, {'Content-Type': 'text/html'});
+                            return res.end('Form Not Found!');
+                        }
+                        res.writeHead(200, {'Content-Type': 'text/html'});
+                        res.write(data);
+                        return res.end();
+                    });
+                };
+
+                exports.getJSCode = function(req, res) {
+                    const formPath = './forms/code.html';
+                    fs.readFile(formPath, (error, data) => {
+                        if(error) {
+                            res.writeHead(404, {'Content-Type': 'text/html'});
+                            return res.end('Form Not Found!');
+                        }
+                        res.writeHead(200, {'Content-Type': 'text/html'});
+                        res.write(data);
+                        return res.end();
+                    });
                 };
                 /*
                 1.3. Students Controller
@@ -188,11 +185,11 @@
                 const Joi = require('joi');
 
                 exports.validateStudent = (student) => {
-                const schema = Joi.object({
-                    name: Joi.string().pattern(new RegExp('^[A-z]*[\'-]*[A-z]*$')).required(),
-                    code: Joi.string().length(7).required(),
-                });
-                return schema.validate(student);
+                    const schema = Joi.object({
+                        name: Joi.string().pattern(new RegExp('^([A-z]*[\'-]*)+$')).required(),
+                        code: Joi.string().length(7).required(),
+                    });
+                    return schema.validate(student);
                 };
 
                 exports.validateCourse = (course) => {
@@ -211,19 +208,19 @@
                 {
                     name: 'Maths',
                     code: 'PHM011',
-                    id: 0,
+                    id: 1,
                     description: 'Engineering Mathematics'
                 },
                 {
                     name: 'Physics',
                     code: 'PHM021',
-                    id: 1,
+                    id: 2,
                     description: 'Engineering Physics'
                 },
                 {
                     name: 'Databases',
                     code: 'CSE423',
-                    id: 2,
+                    id: 3,
                     description: 'Database Systems'
                 }
                 ];
@@ -232,19 +229,19 @@
                 */
                 exports.students = [
                 {
-                    name: 'Omar Abdelaziz Morgan',
+                    name: 'Omar-Abdelaziz-Morgan',
                     code: '1600885',
-                    id: 0
+                    id: 1
                 },
                 {
                     name: 'Ahmed Mohamed',
                     code: '1900885',
-                    id: 1
+                    id: 2
                 },
                 {
-                    name: 'Mohamed Abdelaziz Morgan',
+                    name: 'Mohamed-Abdelaziz-Morgan',
                     code: '1820222',
-                    id: 2
+                    id: 3
                 },
                 ];
                 /*
@@ -290,11 +287,11 @@
                 */
                 const express = require('express');
                 const router = express.Router();
-                const codeController = require('../controllers/codeController');
+                const formsController = require('../controllers/formsController');
 
-                router.get('/', codeController.getJSCode);
+                router.get('/', formsController.getJSCode);
 
-                router.get('/web/sourceCode', codeController.getJSCode);    
+                router.get('/web/sourceCode', formsController.getJSCode);    
 
                 module.exports = router;
                 /*
