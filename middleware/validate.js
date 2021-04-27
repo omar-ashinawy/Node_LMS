@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 exports.validateStudent = (student) => {
     const schema = Joi.object({
-        name: Joi.string().pattern(new RegExp('^[A-z]*[\'-]*[A-z]*$')).required(),
+        name: Joi.string().pattern(new RegExp('^([A-z]*[\'-]*)+$')).required(),
         code: Joi.string().length(7).required(),
     });
     return schema.validate(student);
